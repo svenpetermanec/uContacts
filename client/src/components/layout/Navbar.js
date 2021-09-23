@@ -1,22 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export const Navbar = ({
-  title = 'Contact Keeper',
-  icon = 'fas fa-id-card-alt',
+  title = "Contact Keeper",
+  icon = "fas fa-id-card-alt",
 }) => {
   return (
-    <div className='navbar bg-primary'>
+    <div className="navbar bg-primary">
       <h1>
         <i className={icon} /> {title}
       </h1>
       <ul>
         <li>
-          <Link to='/'>Home</Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to='/about'>About</Link>
+          <Link to="/about">About</Link>
         </li>
       </ul>
     </div>
@@ -24,6 +24,6 @@ export const Navbar = ({
 };
 
 Navbar.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   icon: PropTypes.string,
 };
