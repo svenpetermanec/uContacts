@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import ContactContext from "../../context/contact/contactContext";
+import React, { useContext, useEffect, useState } from 'react';
+import ContactContext from '../../context/contact/contactContext';
 
 export const ContactForm = () => {
   const contactContext = useContext(ContactContext);
@@ -11,19 +11,19 @@ export const ContactForm = () => {
       setContact(current);
     } else {
       setContact({
-        name: "",
-        email: "",
-        phone: "",
-        type: "personal",
+        name: '',
+        email: '',
+        phone: '',
+        type: 'personal',
       });
     }
   }, [contactContext, current]);
 
   const [contact, setContact] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    type: "personal",
+    name: '',
+    email: '',
+    phone: '',
+    type: 'personal',
   });
 
   const { name, email, phone, type } = contact;
@@ -49,7 +49,7 @@ export const ContactForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <h2 className="text-primary">
-        {current ? "Edit contact" : "Add contact"}
+        {current ? 'Edit contact' : 'Add contact'}
       </h2>
       <input
         type="text"
@@ -77,22 +77,22 @@ export const ContactForm = () => {
         type="radio"
         name="type"
         value="personal"
-        checked={type === "personal"}
+        checked={type === 'personal'}
         onChange={onChange}
       />
-      Personal{" "}
+      Personal{' '}
       <input
         type="radio"
         name="type"
         value="professional"
-        checked={type === "professional"}
+        checked={type === 'professional'}
         onChange={onChange}
       />
-      Professional{" "}
+      Professional{' '}
       <div>
         <input
           type="submit"
-          value={current ? "Update contact" : "Add contact"}
+          value={current ? 'Update contact' : 'Add contact'}
           className="btn btn-primary btn-block"
         ></input>
       </div>

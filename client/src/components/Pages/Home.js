@@ -1,7 +1,7 @@
-import React from "react";
-import { ContactForm } from "../contacts/ContactForm";
-import { Contacts } from "../contacts/Contacts";
-import { ContactFilter } from "../contacts/ContactFilter";
+import React from 'react';
+import { ContactForm } from '../contacts/ContactForm';
+import { Contacts } from '../contacts/Contacts';
+import { ContactFilter } from '../contacts/ContactFilter';
 
 export const Home = () => {
   return (

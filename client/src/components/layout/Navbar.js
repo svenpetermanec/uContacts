@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export const Navbar = ({
-  title = "Contact Keeper",
-  icon = "fas fa-id-card-alt",
+  title = 'Contact Keeper',
+  icon = 'fas fa-id-card-alt',
 }) => {
   return (
     <div className="navbar bg-primary">
@@ -17,6 +17,12 @@ export const Navbar = ({
         </li>
         <li>
           <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/register">Register</Link>
+        </li>
+        <li>
+          <Link to="/login">Login</Link>
         </li>
       </ul>
     </div>

@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import PropTypes from "prop-types";
-import ContactContext from "../../context/contact/contactContext";
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import ContactContext from '../../context/contact/contactContext';
 
 export const ContactItem = ({ contact }) => {
   const contactContext = useContext(ContactContext);
@@ -16,12 +16,12 @@ export const ContactItem = ({ contact }) => {
   return (
     <div className="card bg-light">
       <h3 className="text-primary text-left">
-        {name}{" "}
+        {name}{' '}
         <span
-          style={{ float: "right" }}
+          style={{ float: 'right' }}
           className={
-            "badge " +
-            (type === "professional" ? "badge-success" : "badge-primary")
+            'badge ' +
+            (type === 'professional' ? 'badge-success' : 'badge-primary')
           }
         >
           {type.charAt(0).toUpperCase() + type.slice(1)}

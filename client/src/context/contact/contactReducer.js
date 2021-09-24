@@ -6,7 +6,7 @@ import {
   UPDATE_CONTACT,
   FILTER_CONTACTS,
   CLEAR_FILTER,
-} from "./../types";
+} from './../types';
 
 // eslint-disable-next-line
 export default (state, action) => {
@@ -35,7 +35,7 @@ export default (state, action) => {
       return {
         ...state,
         filtered: state.contacts.filter((contact) => {
-          const regex = new RegExp(`${action.payload}`, "gi");
+          const regex = new RegExp(`${action.payload}`, 'gi');
           return contact.name.match(regex) || contact.email.match(regex);
         }),
       };
