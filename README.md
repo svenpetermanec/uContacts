@@ -1,7 +1,7 @@
 
 # uContacts
 
-> Full stack MERN contact manager implementing context & JWT authentication
+> Full stack MERN contact manager implementing context & JWT authentication<br>
 The API documentation can be found [here](https://ucontacts.herokuapp.com/api-docs) 
 ## Usage
 
