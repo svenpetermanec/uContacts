@@ -6,9 +6,26 @@ const { check, validationResult } = require('express-validator');
 const User = require('./../models/User');
 const Contact = require('./../models/Contact');
 
-//@route    GET api/contacts
-//@desc     Get all users contacts
-//@access   Private
+/**
+ * @typedef Contact
+ * @property {string} _id
+ * @property {string} name
+ * @property {string} email
+ * @property {string} date
+ * @property {string} phone
+ * @property {string} type
+ * @property {string} user
+ * @property {integer} __v
+ */
+
+/**
+ * Get all users contacts
+ * @route GET /contacts
+ * @group Contacts - CRUD
+ * @returns {Array.<Contact>} 200 - All users contacts
+ * @security JWT
+ */
+
 router.get('/', auth, async (req, res) => {
   try {
     const contacts = await Contact.find({ user: req.user.id }).sort({
@@ -21,9 +38,23 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-//@route    POST api/contacts
-//@desc     Add new contact
-//@access   Private
+/**
+ * @typedef NewContact
+ * @property {string} name.query.required
+ * @property {string} email.query.required
+ * @property {string} phone.query.required
+ * @property {string} type.query.required
+ */
+
+/**
+ * Add new contact
+ * @route POST /contacts
+ * @group Contacts - CRUD
+ * @param {NewContact.model} NewContact.body.required
+ * @returns {Contact.model} 200 - New contact
+ * @security JWT
+ */
+
 router.post(
   '/',
   [auth, [check('name', 'Name is required').not().isEmpty()]],
@@ -54,9 +85,16 @@ router.post(
   }
 );
 
-//@route    PUT api/contacts/:id
-//@desc     Update contact
-//@access   Private
+/**
+ * Update contact
+ * @route PUT /contacts/{id}
+ * @group Contacts - CRUD
+ * @param {string} id.path.required - contact id
+ * @param {Contact.model} Contact.body.required
+ * @returns {Contact.model} 200 - Updated contact
+ * @security JWT
+ */
+
 router.put('/:id', auth, async (req, res) => {
   const { name, email, phone, type } = req.body;
 
@@ -88,9 +126,20 @@ router.put('/:id', auth, async (req, res) => {
   }
 });
 
-//@route    DELETE api/contacts/:id
-//@desc     Delete contact
-//@access   Private
+/**
+ * @typedef Delete
+ * @property {string} msg
+ */
+
+/**
+ * Delete contact
+ * @route DELETE /contacts/{id}
+ * @group Contacts - CRUD
+ * @param {string} id.path.required - contact id
+ * @returns {Delete.model} 200 - Removed contact
+ * @security JWT
+ */
+
 router.delete('/:id', auth, async (req, res) => {
   try {
     let contact = await Contact.findById(req.params.id);

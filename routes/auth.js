@@ -8,9 +8,23 @@ const auth = require('./../middleware/auth');
 
 const User = require('./../models/User');
 
-//@route    GET api/auth
-//@desc     Get logged in user
-//@access   Private
+/**
+ * @typedef Loggedin
+ * @property {string} _id
+ * @property {string} name
+ * @property {string} email
+ * @property {string} date
+ * @property {integer} __v
+ */
+
+/**
+ * Refresh logged in user
+ * @route GET /auth
+ * @group Users - Operations about user
+ * @returns {Loggedin.model} 200 - Users logged in data
+ * @security JWT
+ */
+
 router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
@@ -21,9 +35,24 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-//@route    POST api/auth
-//@desc     Auth user & get token
-//@access   Public
+/**
+ * @typedef Login
+ * @property {string} email.query.required
+ * @property {string} password.query.required
+ */
+
+/**
+ * @typedef JWT
+ * @property {string} token
+ */
+
+/**
+ * Login user
+ * @route POST /auth
+ * @group Users - Operations about user
+ * @param {Login.model} Login.body.required
+ * @returns {JWT.model} 200 - token
+ */
 router.post(
   '/',
   [
