@@ -7,9 +7,25 @@ const bcrypt = require('bcryptjs');
 
 const User = require('./../models/User');
 
-//@route    POST api/users
-//@desc     Register a user
-//@access   Public
+/**
+ * @typedef User
+ * @property {string} name.query.required
+ * @property {string} email.query.required
+ * @property {string} password.query.required
+ */
+
+/**
+ * @typedef JWT
+ * @property {string} token
+ */
+
+/**
+ * Register a user
+ * @route POST /users
+ * @group Users - Operations about user
+ * @param {User.model} User.body.required
+ * @returns {JWT.model} 200 - token
+ */
 router.post(
   '/',
   [
